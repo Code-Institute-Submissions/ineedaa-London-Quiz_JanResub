@@ -4,7 +4,7 @@ const quiz = [
         a: "LHR",
         b: "HTR",
         c: "LTR",
-        d: "HTR",
+        d: "HLR",
         ans: "answer1"
     },
     {
@@ -82,3 +82,59 @@ const quiz = [
         ans: "answer1" 
     }   
 ];
+   const question = document.getElementById('question');
+   const option1 = document.getElementById('option1');
+   const option2 = document.getElementById('option2');
+   const option3 = document.getElementById('option3');
+   const option4 = document.getElementById('option4');
+   const submit = document.getElementById('submit');
+   const answers = document.querySelectorAll('.answer');
+   const scoreArea = document.getElementById('score-area');
+
+   let questionIndex=0;
+   let score=0;
+
+   function loadQuestion(){
+          let questionList= quiz[questionIndex];
+          question.innerText=questionList.question;
+          option1.innerText=questionList.a;
+          option2.innerText=questionList.b;
+          option3.innerText=questionList.c;
+          option4.innerText=questionList.d;
+   }
+
+   loadQuestion();
+
+   function checkedAnswer(){
+    let answer;
+     answers.forEach(function(currentAnswer){
+        if (currentAnswer.checked){
+          answer = currentAnswer.id;
+        }
+     });
+     return answer;
+ }
+ submit.addEventListener('click',function(){
+    const userAnswer = checkedAnswer();
+    console.log(userAnswer);
+    evaluateAnswer();
+ });
+    function evaluateAnswer(){
+        let correctAnswer = quiz[questionIndex].ans;
+        if (correctAnswer === userAnswer){
+            score++;
+            scoreArea.classList.remove('hide');
+            scoreArea.innerHTML=`
+            <p> Correct Answer !!!</p>
+            <p> You Scored ${score}/10 </p>`;
+        }else if (userAnswer !== correctAnswer){
+            scoreArea.classList.remove('hide');
+            scoreArea.innerHTML=`
+            <p> Incorrect Answer !!!</p>
+            <p> You Scored ${score} /10</p>`;
+        }else {
+            console.log('user not clicked!!');
+        }
+     };
+   
+

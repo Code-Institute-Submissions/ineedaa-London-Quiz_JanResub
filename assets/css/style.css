@@ -40,22 +40,23 @@ body {
     
 }
 .container{
-    background-color: rgb(244, 247, 247);
+    background-color: #e9ebeb;
     padding:3px 8px;
-    height:55%;
+    height:50%;
     width:40%;
-    text-align:center;
     border-radius: 1px;
 }
 
 .container h2{
-    font-size: 35px;
-    margin:25px 10px;
+    font-size: 25px;
+    margin:25px 15px;
 
 }
 .container li {
     list-style:none;
-    margin-top: 1.5px;
+    margin-top: 10px;
+    justify-content: left;
+    padding-left:50px;
     
 }
 input{
@@ -70,13 +71,13 @@ input{
      display:block;
      margin:auto;;
      text-align:center;
-     margin-top:30px;
+     margin-top:40px;
      font-size: smaller;
      background-color: #eeabab;
 }
 
 #submit:hover {
-    background-color: rgb(221, 120, 87);
+    background-color: #dd7857;
 }
 
 #next {
@@ -86,13 +87,17 @@ input{
      text-align:center;
      margin-top:20px;
      font-size: smaller;
-     background-color: #d0c23e;
+     background-color: #b5b2c9;
 }
+#next:hover{
+    background-color: #0e7cd6;
 
+}
 .score-area {
     background-color: lavender;
     margin:30px;
-    padding:25px 30px;
+    padding:15px 30px;
+    width:25%;
 
 }
 
