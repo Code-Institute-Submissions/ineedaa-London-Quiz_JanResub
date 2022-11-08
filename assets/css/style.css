@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;600&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+body {
+    font-family: 'Lora', serif;
+    font-weight: 300;
+    color: #040404;
+    height:100%;
+    background-image: url('../images/london.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+.main-div {
+    width:100%;
+    height:800px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.heading-div{
+    
+    width:50%;
+    height:100px;
+    text-align:center;
+    padding:5px;
+    margin:auto;
+    position:relative;
+    top:100px;
+
+}
+.main-heading {
+    letter-spacing: 2px;
+    color: #822727;
+    font-weight:600;
+    
+}
+.container{
+    background-color: rgb(244, 247, 247);
+    padding:3px 8px;
+    height:55%;
+    width:40%;
+    text-align:center;
+    border-radius: 1px;
+}
+
+.container h2{
+    font-size: 35px;
+    margin:25px 10px;
+
+}
+.container li {
+    list-style:none;
+    margin-top: 1.5px;
+    
+}
+input{
+    cursor:pointer;
+
+}
+.hide {
+    display:none;
+}
+#submit { 
+     padding: 10px;
+     display:block;
+     margin:auto;;
+     text-align:center;
+     margin-top:30px;
+     font-size: smaller;
+     background-color: #eeabab;
+}
+
+#submit:hover {
+    background-color: rgb(221, 120, 87);
+}
+
+#next {
+    padding: 10px;
+     display:block;
+     margin:auto;;
+     text-align:center;
+     margin-top:20px;
+     font-size: smaller;
+     background-color: #d0c23e;
+}
+
+.score-area {
+    background-color: lavender;
+    margin:30px;
+    padding:25px 30px;
+
+}
+
