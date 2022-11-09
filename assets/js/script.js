@@ -132,7 +132,6 @@ const quiz = [
     submit.addEventListener('click',function(){
         const userAnswer = checkedAnswer();
         evaluateAnswer(userAnswer);
-       
     });
 /**
  * this function evaluates the answer given by the user and matches it with the array of answer.
@@ -189,6 +188,6 @@ function displayResult(){
     }else{
     container.innerHTML=`
     <h3 class="result">Your Total Score= ${score}/10</h3>
-    <h3 class="result">Better Luck Next Time</h3>`;
+    <h3 class="result">Better Luck Next Time!!!</h3>`;
     }
 }
