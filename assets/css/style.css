@@ -40,9 +40,9 @@ body {
     
 }
 .container{
-    background-color: #e9ebeb;
+    background-color: #f3dcdc;
     padding:3px 8px;
-    height:50%;
+    height:60%;
     width:40%;
     border-radius: 1px;
 }
@@ -52,12 +52,19 @@ body {
     margin:25px 15px;
 
 }
+
 .container li {
     list-style:none;
     margin-top: 10px;
     justify-content: left;
     padding-left:50px;
     
+}
+.container h3{
+    font-size:30px;
+    color:#0e7cd6;
+    margin:40px;
+    padding:40px;
 }
 input{
     cursor:pointer;
@@ -67,13 +74,13 @@ input{
     display:none;
 }
 #submit { 
-     padding: 10px;
-     display:block;
-     margin:auto;;
-     text-align:center;
-     margin-top:40px;
-     font-size: smaller;
-     background-color: #eeabab;
+    padding: 10px;
+    display:block;
+    margin:auto;;
+    text-align:center;
+    margin-top:40px;
+    font-size: smaller;
+    background-color: #eeabab;
 }
 
 #submit:hover {
@@ -81,23 +88,28 @@ input{
 }
 
 #next {
+    
     padding: 10px;
-     display:block;
-     margin:auto;;
-     text-align:center;
-     margin-top:20px;
-     font-size: smaller;
-     background-color: #b5b2c9;
+    display:block;
+    margin:auto;;
+    text-align:center;
+    margin-top:20px;
+    font-size: smaller;
+    background-color: #b5b2c9;
 }
 #next:hover{
     background-color: #0e7cd6;
 
 }
-.score-area {
-    background-color: lavender;
-    margin:30px;
-    padding:15px 30px;
+#scoreArea {
+    background-color: #d5809c;
+    margin:30px auto;
+    padding:30px 30px;
     width:25%;
+    height:5%;
+    text-align:center;
+    
 
 }
+
 

@@ -1,3 +1,5 @@
+
+// The array of questions for the game. 
 const quiz = [
     {
         question: "Q1:What is the airport code for London Heathrow?",
@@ -17,7 +19,7 @@ const quiz = [
     },
     {
         question: "Q3:St Paul Cathedral was the tallest building in London until which decade?",
-        a: "19670",
+        a: "1970",
         b: "1980",
         c: "1960",
         d: "1950",
@@ -82,6 +84,7 @@ const quiz = [
         ans: "answer1" 
     }   
 ];
+// The elements of the array are saved as constants.
    const question = document.getElementById('question');
    const option1 = document.getElementById('option1');
    const option2 = document.getElementById('option2');
@@ -89,52 +92,103 @@ const quiz = [
    const option4 = document.getElementById('option4');
    const submit = document.getElementById('submit');
    const answers = document.querySelectorAll('.answer');
-   const scoreArea = document.getElementById('score-area');
+   const scoreArea = document.getElementById('scoreArea');
+   const next = document.getElementById('next');
+   const container = document.getElementsByClassName('container')[0];
 
+// Let the initial value of the question index and score is zero.
    let questionIndex=0;
    let score=0;
 
+/**
+  *creates a function that gives the values of the array into the elements of html.
+  */
    function loadQuestion(){
-          let questionList= quiz[questionIndex];
-          question.innerText=questionList.question;
-          option1.innerText=questionList.a;
-          option2.innerText=questionList.b;
-          option3.innerText=questionList.c;
-          option4.innerText=questionList.d;
-   }
+        let questionList= quiz[questionIndex];
+        question.innerText=questionList.question;
+        option1.innerText=questionList.a;
+        option2.innerText=questionList.b;
+        option3.innerText=questionList.c;
+        option4.innerText=questionList.d; 
+    };
 
+// calls the function to load the initial array of question in the webpage.
    loadQuestion();
 
+/**
+ * gets the value of the answer user clicked
+ * @returns the id of the element user opted.
+ */ 
    function checkedAnswer(){
     let answer;
-     answers.forEach(function(currentAnswer){
+    answers.forEach(function(currentAnswer){
         if (currentAnswer.checked){
           answer = currentAnswer.id;
         }
      });
-     return answer;
- }
- submit.addEventListener('click',function(){
-    const userAnswer = checkedAnswer();
-    console.log(userAnswer);
-    evaluateAnswer();
- });
-    function evaluateAnswer(){
-        let correctAnswer = quiz[questionIndex].ans;
-        if (correctAnswer === userAnswer){
-            score++;
-            scoreArea.classList.remove('hide');
-            scoreArea.innerHTML=`
-            <p> Correct Answer !!!</p>
-            <p> You Scored ${score}/10 </p>`;
-        }else if (userAnswer !== correctAnswer){
-            scoreArea.classList.remove('hide');
-            scoreArea.innerHTML=`
-            <p> Incorrect Answer !!!</p>
-            <p> You Scored ${score} /10</p>`;
-        }else {
-            console.log('user not clicked!!');
-        }
-     };
-   
-
+    return answer;
+    }
+// when user clicks the submit button, the Dom gets the id of the element and compares with array of the quiz.
+    submit.addEventListener('click',function(){
+        const userAnswer = checkedAnswer();
+        evaluateAnswer(userAnswer);
+       
+    });
+/**
+ * this function evaluates the answer given by the user and matches it with the array of answer.
+ * @param {*} userAnswer 
+ */  
+function evaluateAnswer(userAnswer){
+    let correctAnswer = quiz[questionIndex].ans;
+    if (correctAnswer === userAnswer){
+        score++;
+        const scoreArea = document.getElementById('scoreArea');
+        scoreArea.classList.remove('hide');
+        scoreArea.innerHTML=`
+        <p> Correct Answer !!!</p>
+        <p> You Scored ${score}/10 </p>`;
+    }else if (userAnswer !== correctAnswer){
+        scoreArea.classList.remove('hide');
+        scoreArea.innerHTML=`
+        <p> Incorrect Answer !!!</p>
+        <p> You Scored ${score}/10</p>`;
+    }else {
+        scoreArea.classList.add('hide');
+    }
+// if the user hits submit button at the end of tenth question,its displays the final result.
+    if(questionIndex == (quiz.length - 1)){
+        displayResult();
+    }
+};
+     
+// The next button creates an event listener to go to the next question till ten questions.    
+next.addEventListener('click',function(){
+    questionIndex++;
+    deselectAll();
+    scoreArea.classList.add('hide');
+    if(questionIndex < (quiz.length)){
+        loadQuestion();
+    }
+});
+/**
+ * deselects all the options selected for the previous question .
+ */   
+function deselectAll(){
+    answers.forEach(function(currentAnswer){
+        currentAnswer.checked=false;
+    });
+}
+/**
+ * displays the final result when user clicks the final submit button at tenth question.
+ */
+function displayResult(){
+    if(score == 10){
+    container.innerHTML=`
+    <h3 class="result">Congratulations!!!</h3>
+    <h3 class="result">You Scored ${score}/10</h3>`;
+    }else{
+    container.innerHTML=`
+    <h3 class="result">Your Total Score= ${score}/10</h3>
+    <h3 class="result">Better Luck Next Time</h3>`;
+    }
+}
