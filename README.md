@@ -21,6 +21,10 @@ London Quiz is a website that mainly aims with testing the knowledge of how well
 
 ### Existing Features
 
+
+   ![correctanswer](docs/correctanswer.png)
+
+
 #### Header
 - The header in the page displays the topic of the quiz and what the quiz actually relates to.
 
@@ -101,13 +105,17 @@ The technology used in this website is :
    - No errors found whie testing on [W3Cvalidator.](https://validator.w3.org/)
  - #### CSS
    - No errors found while testing on [W3Cvalidator.](https://validator.w3.org/)
+ - #### Lighthouse
+   
+   - ![lighthouse](docs/lighthouse.png)
+ 
  - #### JavaScript
    - No errors found while testing on [JSHint](https://jshint.com/)
    - The following metrics were returned.
-    - There are 10 functions in this file.
-    - Function with the largest signature take 1 arguments, while the median is 0.
-    - Largest function has 12 statements in it, while the median is 2.5.
-    - The most complex function has a cyclomatic complexity value of 4 while the median is 1.
+     - There are 10 functions in this file.
+     - Function with the largest signature take 1 arguments, while the median is 0.
+     - Largest function has 12 statements in it, while the median is 2.5.
+     - The most complex function has a cyclomatic complexity value of 4 while the median is 1.
 ### Fixed Bugs
    - Fixed bugs that caused increase in number of questionindex while pressing the next button.Solved by creating a displayNextQuestion function with the help of my mentor Rohit Sharma.
    - Solved a bug that removes the hide feature of 'next' button with the help of tutors of Code Institute.
