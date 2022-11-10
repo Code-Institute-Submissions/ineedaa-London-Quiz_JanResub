@@ -85,59 +85,69 @@ const quiz = [
     }   
 ];
 // The elements of the array are saved as constants.
-   const question = document.getElementById('question');
-   const option1 = document.getElementById('option1');
-   const option2 = document.getElementById('option2');
-   const option3 = document.getElementById('option3');
-   const option4 = document.getElementById('option4');
-   const submit = document.getElementById('submit');
-   const answers = document.querySelectorAll('.answer');
-   const scoreArea = document.getElementById('scoreArea');
-   const next = document.getElementById('next');
-   const container = document.getElementsByClassName('container')[0];
+const question = document.getElementById('question');
+const option1 = document.getElementById('option1');
+const option2 = document.getElementById('option2');
+const option3 = document.getElementById('option3');
+const option4 = document.getElementById('option4');
+const submit = document.getElementById('submit');
+const answers = document.querySelectorAll('.answer');
+const scoreArea = document.getElementById('scoreArea');
+const next = document.getElementById('next');
+const container = document.getElementsByClassName('container')[0];
 
 // Let the initial value of the question index and score is zero.
-   let questionIndex=0;
-   let score=0;
+let questionIndex=0;
+let score=0;
 
+// Wait for the DOM to finish loading before running the game
+// Get the button elements and add event listeners to them
+
+window.addEventListener('DOMContentLoaded',loadQuestion);
+submit.addEventListener('click',userOptedAnswer);
+next.addEventListener('click',displayNextQuestion);
 /**
   *creates a function that gives the values of the array into the elements of html.
   */
-   function loadQuestion(){
-        let questionList= quiz[questionIndex];
-        question.innerText=questionList.question;
-        option1.innerText=questionList.a;
-        option2.innerText=questionList.b;
-        option3.innerText=questionList.c;
-        option4.innerText=questionList.d; 
-    };
+function loadQuestion(){
+    let questionList= quiz[questionIndex];
+    question.innerText=questionList.question;
+    option1.innerText=questionList.a;
+    option2.innerText=questionList.b;
+    option3.innerText=questionList.c;
+    option4.innerText=questionList.d;  
+};
 
-// calls the function to load the initial array of question in the webpage.
-   loadQuestion();
+
+   
 
 /**
  * gets the value of the answer user clicked
  * @returns the id of the element user opted.
  */ 
-   function checkedAnswer(){
+function checkedAnswer(){
     let answer;
     answers.forEach(function(currentAnswer){
         if (currentAnswer.checked){
-          answer = currentAnswer.id;
-        }
-     });
+            answer = currentAnswer.id;
+        };
+    });
     return answer;
     }
-// when user clicks the submit button, the Dom gets the id of the element and compares with array of the quiz.
-    submit.addEventListener('click',function(){
-        const userAnswer = checkedAnswer();
-        evaluateAnswer(userAnswer);
-    });
+/**
+ * when user clicks the submit button, the DOM gets the id of the element and compares with array of the quiz.
+ */
+    
+function userOptedAnswer(){
+    const userAnswer = checkedAnswer();
+    evaluateAnswer(userAnswer);
+}
 /**
  * this function evaluates the answer given by the user and matches it with the array of answer.
  * @param {*} userAnswer 
  */  
 function evaluateAnswer(userAnswer){
+    onSubmit();
     let correctAnswer = quiz[questionIndex].ans;
     if (correctAnswer === userAnswer){
         score++;
@@ -159,16 +169,23 @@ function evaluateAnswer(userAnswer){
         displayResult();
     }
 };
-     
+function onSubmit(){
+    const next= document.getElementById('next');
+    next.classList.remove('hide');
+}
+    
 // The next button creates an event listener to go to the next question till ten questions.    
-next.addEventListener('click',function(){
+function displayNextQuestion(){
     questionIndex++;
     deselectAll();
+    next.classList.add('hide');
     scoreArea.classList.add('hide');
     if(questionIndex < (quiz.length)){
         loadQuestion();
+    }else{
+        next.classList.add('hide');
     }
-});
+};
 /**
  * deselects all the options selected for the previous question .
  */   
@@ -182,12 +199,13 @@ function deselectAll(){
  */
 function displayResult(){
     if(score == 10){
-    container.innerHTML=`
-    <h3 class="result">Congratulations!!!</h3>
-    <h3 class="result">You Scored ${score}/10</h3>`;
-    }else{
-    container.innerHTML=`
-    <h3 class="result">Your Total Score= ${score}/10</h3>
-    <h3 class="result">Better Luck Next Time!!!</h3>`;
-    }
+        container.innerHTML=`
+        <h3>Congratulations!!!<i class="fa fa-smile-o" aria-hidden="true"></i></h3>
+        <h4>You Scored ${score}/10</h4>`;
+        }else{
+        container.innerHTML=`
+        <h3>Better Luck Next Time!!!<i class="fa fa-frown-o" aria-hidden="true"></i></h3>
+        <h4>Your Total Score= ${score}/10</h4>
+        `;
+        }
 }

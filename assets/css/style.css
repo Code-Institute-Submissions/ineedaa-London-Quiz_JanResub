@@ -62,16 +62,22 @@ body {
 }
 .container h3{
     font-size:30px;
-    color:#0e7cd6;
-    margin:40px;
-    padding:40px;
+    color:#000000;
+    margin-left:60px;
+    padding:50px;
+}
+.container h4{
+    font-size:30px;
+    color:#000000;
+    margin-left:60px;
+    padding:10px 50px;
 }
 input{
     cursor:pointer;
 
 }
 
-/* to hide the score Area */
+/* to hide the score Area,next and submit buttons */
 .hide {
     display:none;
 }
@@ -83,7 +89,7 @@ input{
     margin:auto;;
     text-align:center;
     margin-top:40px;
-    font-size: smaller;
+    font-size:16px;
     background-color: #eeabab;
 }
 #submit:hover {
@@ -91,13 +97,14 @@ input{
 }
 
 /*next button */
-#next {   
-    padding: 10px;
-    display:block;
-    margin:auto;;
+.wrapper{
     text-align:center;
-    margin-top:20px;
-    font-size: smaller;
+}
+#next {   
+    padding:10px;
+    margin:20px 5px;
+    text-align:center;
+    font-size:16px;
     background-color: #b5b2c9;
 }
 #next:hover{
@@ -119,6 +126,7 @@ input{
 @media screen and (max-width:1400px) {
     .container{
         height:70%;
+        width:60%;
     }
     #scoreArea {
         background-color: #d5809c;
@@ -133,9 +141,13 @@ input{
     }
     .container h3{
         font-size:25px;
-        color:#f21313;
-        margin:20px;
-        padding:20px;
+        margin-left:60px;
+        padding:40px;
+    }
+    .container h4{
+        font-size:25px;
+        margin-left:60px;
+        padding:10px 40px;
     }
     .container{
         height:70%;
@@ -185,8 +197,13 @@ input{
     }
     .container h3{
         font-size:20px;
-        color:#f21313;
-        margin:20px;
-        padding:20px;
+        margin-left:30px;
+        padding:30px;
+    }
+    .container h4{
+        font-size: 20px;
+        margin-left:30px;
+        padding:10px 30px;
+    
     }
 }
