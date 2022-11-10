@@ -102,10 +102,10 @@ let score=0;
 
 // Wait for the DOM to finish loading before running the game
 // Get the button elements and add event listeners to them
-
 window.addEventListener('DOMContentLoaded',loadQuestion);
 submit.addEventListener('click',userOptedAnswer);
 next.addEventListener('click',displayNextQuestion);
+
 /**
   *creates a function that gives the values of the array into the elements of html.
   */
@@ -116,11 +116,8 @@ function loadQuestion(){
     option2.innerText=questionList.b;
     option3.innerText=questionList.c;
     option4.innerText=questionList.d;  
-};
-
-
-   
-
+}
+ 
 /**
  * gets the value of the answer user clicked
  * @returns the id of the element user opted.
@@ -130,14 +127,14 @@ function checkedAnswer(){
     answers.forEach(function(currentAnswer){
         if (currentAnswer.checked){
             answer = currentAnswer.id;
-        };
+        }
     });
     return answer;
-    }
+}
+
 /**
  * when user clicks the submit button, the DOM gets the id of the element and compares with array of the quiz.
- */
-    
+ */   
 function userOptedAnswer(){
     const userAnswer = checkedAnswer();
     evaluateAnswer(userAnswer);
@@ -161,20 +158,24 @@ function evaluateAnswer(userAnswer){
         scoreArea.innerHTML=`
         <p> Incorrect Answer !!!</p>
         <p> You Scored ${score}/10</p>`;
-    }else {
+    }else{
         scoreArea.classList.add('hide');
     }
 // if the user hits submit button at the end of tenth question,its displays the final result.
     if(questionIndex == (quiz.length - 1)){
         displayResult();
     }
-};
+}
+
+/**
+ * when user clicks submit button ,the next button pops up.
+ */
 function onSubmit(){
     const next= document.getElementById('next');
     next.classList.remove('hide');
 }
     
-// The next button creates an event listener to go to the next question till ten questions.    
+// The next button creates an event listener to display the next question till ten questions.    
 function displayNextQuestion(){
     questionIndex++;
     deselectAll();
@@ -185,7 +186,7 @@ function displayNextQuestion(){
     }else{
         next.classList.add('hide');
     }
-};
+}
 /**
  * deselects all the options selected for the previous question .
  */   
@@ -202,10 +203,9 @@ function displayResult(){
         container.innerHTML=`
         <h3>Congratulations!!!<i class="fa fa-smile-o" aria-hidden="true"></i></h3>
         <h4>You Scored ${score}/10</h4>`;
-        }else{
+    }else{
         container.innerHTML=`
         <h3>Better Luck Next Time!!!<i class="fa fa-frown-o" aria-hidden="true"></i></h3>
-        <h4>Your Total Score= ${score}/10</h4>
-        `;
-        }
+        <h4>Your Total Score= ${score}/10</h4>`;
+    }
 }
