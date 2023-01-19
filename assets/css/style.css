@@ -30,14 +30,21 @@ body {
 
 .main-div {
     background: #8674c4;
-    border: 4mm ridge rgba(211, 220, 50, .6);
+    border: 4mm ridge #fae43bc1;
     border-radius: 10px;
     padding: 5px 20px 50px;
     width: 95%;
     max-width: 500px;
-    margin: 0 auto 214px;
+    margin:5% auto;
 }
-
+h1 {
+    color:#c0c610fd; 
+    font-size: 50px;
+}
+img {
+    width: 60px;
+    height: 60px;
+}
 .question-container {
     text-align: center;
 }
@@ -57,9 +64,9 @@ label {
     display: flex;
     align-items: center;
     border-radius: 5px;
-    background: rgba(255, 5, 5, 0.72);
+    background: #dba2a2f0;
     margin-bottom: 15px;
-    padding: 6px 0;
+    padding: 6px;
     position: relative;
     width: 100%;
     color: #000;
