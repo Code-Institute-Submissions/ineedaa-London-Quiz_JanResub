@@ -1,4 +1,4 @@
-/*** 
+
 // The array of questions for the game. 
 const quiz = [
     {
