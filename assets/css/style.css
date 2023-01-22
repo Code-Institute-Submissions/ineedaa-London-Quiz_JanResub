@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap');
 html {
     box-sizing: border-box;
 }
@@ -45,6 +45,16 @@ img {
     width: 60px;
     height: 60px;
 }
+#progressbar {
+    width: 100%;
+    background-color: rgb(67, 153, 83);
+  }
+  
+#myprogress {
+    width: 1%;
+    height: 30px;
+    background-color: rgb(151, 212, 151);
+  }
 .question-container {
     text-align: center;
 }
@@ -55,8 +65,8 @@ img {
 
 [type=radio] {
     border: 0;
-    height: 0.0625rem;
-    width: 0.0625rem;
+    height: 0.0925rem;
+    width: 0.0925rem;
     position: absolute;
 }
 
@@ -66,7 +76,7 @@ label {
     border-radius: 5px;
     background: #dba2a2f0;
     margin-bottom: 15px;
-    padding: 6px;
+    padding: 6px 8px;
     position: relative;
     width: 100%;
     color: #000;

@@ -90,7 +90,6 @@ const option1 = document.getElementById('option1');
 const option2 = document.getElementById('option2');
 const option3 = document.getElementById('option3');
 const option4 = document.getElementById('option4');
-const submit = document.getElementById('submit');
 const answers = document.querySelectorAll('.answer');
 const scoreArea = document.getElementById('scoreArea');
 const next = document.getElementById('next');
@@ -103,13 +102,12 @@ let score=0;
 // Wait for the DOM to finish loading before running the game
 // Get the button elements and add event listeners to them
 window.addEventListener('DOMContentLoaded',loadQuestion);
-submit.addEventListener('click',userOptedAnswer);
-next.addEventListener('click',displayNextQuestion);
+
 
 /**
   *creates a function that gives the values of the array into the elements of html.
   */
-function loadQuestion(){
+  function loadQuestion(){
     let questionList= quiz[questionIndex];
     question.innerText=questionList.question;
     option1.innerText=questionList.a;
@@ -118,10 +116,12 @@ function loadQuestion(){
     option4.innerText=questionList.d;  
 }
  
+
+
 /**
  * gets the value of the answer user clicked
  * @returns the id of the element user opted.
- */ 
+ **/
 function checkedAnswer(){
     let answer;
     answers.forEach(function(currentAnswer){
@@ -132,64 +132,48 @@ function checkedAnswer(){
     return answer;
 }
 
-/**
- * when user clicks the submit button, the DOM gets the id of the element and compares with array of the quiz.
- */   
-function userOptedAnswer(){
-    const userAnswer = checkedAnswer();
-    evaluateAnswer(userAnswer);
-}
+
 /**
  * this function evaluates the answer given by the user and matches it with the array of answer.
  * @param {*} userAnswer 
- */  
-function evaluateAnswer(userAnswer){
-    onSubmit();
+ **/
+function evaluateAnswer(answer){
+    
     let correctAnswer = quiz[questionIndex].ans;
-    if (correctAnswer === userAnswer){
+    if (correctAnswer === answer){
         score++;
         const scoreArea = document.getElementById('scoreArea');
         scoreArea.classList.remove('hide');
-        scoreArea.innerHTML=`
-        <p> Correct Answer !!!</p>
-        <p> You Scored ${score}/10 </p>`;
-    }else if (userAnswer !== correctAnswer){
+        
+    }else if (answer !== correctAnswer){
         scoreArea.classList.remove('hide');
-        scoreArea.innerHTML=`
-        <p> Incorrect Answer !!!</p>
-        <p> You Scored ${score}/10</p>`;
-    }else{
-        scoreArea.classList.add('hide');
+        
+    }
     }
 // if the user hits submit button at the end of tenth question,its displays the final result.
     if(questionIndex == (quiz.length - 1)){
         displayResult();
     }
-}
+
 
 /**
  * when user clicks submit button ,the next button pops up.
- */
-function onSubmit(){
-    const next= document.getElementById('next');
-    next.classList.remove('hide');
-}
+ **/
+
     
 // The next button creates an event listener to display the next question till ten questions.    
 function displayNextQuestion(){
     questionIndex++;
     deselectAll();
-    next.classList.add('hide');
-    scoreArea.classList.add('hide');
+    
     if(questionIndex < (quiz.length)){
         loadQuestion();
-    }else{
-        next.classList.add('hide');
     }
-}
+    }
+
 /**
  * deselects all the options selected for the previous question .
- */   
+ **/  
 function deselectAll(){
     answers.forEach(function(currentAnswer){
         currentAnswer.checked=false;
@@ -197,7 +181,7 @@ function deselectAll(){
 }
 /**
  * displays the final result when user clicks the final submit button at tenth question.
- */
+ **/
 function displayResult(){
     if(score == 10){
         container.innerHTML=`
