@@ -114,8 +114,7 @@ function loadQuestion(){
     option2.innerText=questionList.b;
     option3.innerText=questionList.c;
     option4.innerText=questionList.d;  
-}
- 
+} 
 /**
  * gets the value of the answer user clicked
  * @returns the id of the element user opted.
@@ -129,7 +128,6 @@ function checkedAnswer(){
     });
     return answer;  
 }
-
 /***
  * when user clicks one of the radio button,the submit button appears.
  */

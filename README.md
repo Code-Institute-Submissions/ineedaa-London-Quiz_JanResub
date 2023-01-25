@@ -107,10 +107,13 @@ The technology used in this website is :
  
  
 ### Validator Testing
+
  - #### HTML
    - No errors found whie testing on [W3Cvalidator.](https://validator.w3.org/)
+
  - #### CSS
    - No errors found while testing on [W3Cvalidator.](https://validator.w3.org/)
+
  - #### Lighthouse
    
    - ![lighthouse](docs/lighthouse.png)
@@ -121,6 +124,7 @@ The technology used in this website is :
    - Function with the largest signature take 1 arguments, while the median is 0.
    - Largest function has 8 statements in it, while the median is 3.
    - The most complex function has a cyclomatic complexity value of 5 while the median is 1.
+
 ### Fixed Bugs
    - Fixed bugs that caused increase in number of questionindex while pressing the next button.Solved by creating a displayNextQuestion function with the help of my mentor Rohit Sharma.
    - Improved navigation of the page by creating a  showSubmitButton function that shows the submit button only when user clicks the options.
@@ -129,6 +133,7 @@ The technology used in this website is :
    - Also user  made aware of the correct answer by creating a function displayRightOptionGreen. 
    - Solved a bug that removes the hide feature of 'next' button with the help of tutors of Code Institute.
    - User Interactivity increased by creating a play again button at the end of the game.
+
 ### Supported Browsers
   - Compatible to Google Chrome.
   - Used chrome stimulator for testing mobile screens.Compatible to all the stimulators in chrome bowser developer tools.
@@ -150,7 +155,6 @@ The technology used in this website is :
 - The page will automatically deployed in the browser.
 
 ## Credits
-
 - Content
   - The inspiration for creating the website and content  was taken from [The Ultimate London Quiz.](https://www.londonxlondon.com/london-quiz/).
   - The forEach function is implemented from [w3schools.](https://w3schools.com)
