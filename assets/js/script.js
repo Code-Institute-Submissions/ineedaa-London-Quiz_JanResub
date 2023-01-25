@@ -1,4 +1,3 @@
-
 // The array of questions for the game. 
 const quiz = [
     {
@@ -131,7 +130,9 @@ function checkedAnswer(){
     return answer;  
 }
 
-
+/***
+ * when user clicks one of the radio button,the submit button appears.
+ */
 showSubmitButton();
 function showSubmitButton(){
     answers.forEach(function(currentAnswer){
@@ -149,7 +150,9 @@ function userOptedAnswer(){
     disableRadioButtons();
     evaluateAnswer(userAnswer);
 }
-
+/**
+ * After user clicks submit button,the radio button is disabled to prevent user to click multiple times.
+ */
 function disableRadioButtons(){
     var radioButtons = document.getElementsByName("answer");
     for (var i = 0; i < radioButtons.length; i++) {
@@ -160,6 +163,10 @@ function disableRadioButtons(){
        }
     }
 }
+/**
+ * When the user ,gets the next questions,all the radio buttons are activated,
+ *  for the user to click for the next answer.
+ */
 function enableRadioButtons(){
     var radioButtons = document.getElementsByName("answer");
     for (var i = 0; i < radioButtons.length; i++) {
@@ -168,7 +175,7 @@ function enableRadioButtons(){
 }
 /**
  * this function evaluates the answer given by the user and matches it with the array of answer.
- * @param {*} userAnswer 
+ * @param {userAnswer} ,gets the user answer.
  */  
 function evaluateAnswer(userAnswer){
     onSubmit();
@@ -180,12 +187,14 @@ function evaluateAnswer(userAnswer){
     // if the user hits submit button at the end of tenth question,its displays the final result.
     if(questionIndex == (quiz.length - 1)){
         displayResult();
-    }
-    
+    }  
 }
-
+/**
+ * This function displays the correct answer in green background,after user clicks their option.
+ * @param {*} correctAnswer 
+ */
  
- function displayRightOptionGreen(correctAnswer) {
+function displayRightOptionGreen(correctAnswer) {
     if (correctAnswer === 'answer1') {
       document.getElementById("option1").classList.add("option-green");
     }
@@ -198,14 +207,16 @@ function evaluateAnswer(userAnswer){
     else if (correctAnswer === 'answer4') {
       document.getElementById("option4").classList.add("option-green");
     }
- }
- 
- function resetAllOptionsColor() {
+}
+ /**
+  * This function reset the color to white.
+  */
+function resetAllOptionsColor() {
     document.getElementById("option1").classList.remove("option-green");
     document.getElementById("option2").classList.remove("option-green");
     document.getElementById("option3").classList.remove("option-green");
     document.getElementById("option4").classList.remove("option-green");
- }
+}
 
 /**
  * when user clicks submit button ,the next button pops up.
@@ -248,5 +259,5 @@ function displayResult(){
     ${score}/10</span>`;
     document.getElementById('play-again').addEventListener('click',function(){
         location.reload();   
-    }) 
+    }); 
 }
