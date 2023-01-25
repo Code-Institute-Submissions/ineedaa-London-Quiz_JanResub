@@ -129,15 +129,43 @@ function checkedAnswer(){
             answer = currentAnswer.id;
         }
     });
-    return answer;
+    return answer;  
 }
 
+
+showSubmitButton();
+function showSubmitButton(){
+    answers.forEach(function(currentAnswer){
+        currentAnswer.addEventListener('change',function(){
+            const submit = document.getElementById('submit');
+            submit.classList.remove('hide');
+    });
+});
+}
 /**
  * when user clicks the submit button, the DOM gets the id of the element and compares with array of the quiz.
  */   
 function userOptedAnswer(){
     const userAnswer = checkedAnswer();
+    disableRadioButtons();
     evaluateAnswer(userAnswer);
+}
+
+function disableRadioButtons(){
+    var radioButtons = document.getElementsByName("answer");
+    for (var i = 0; i < radioButtons.length; i++) {
+        if(radioButtons[i].checked){
+            radioButtons[i].classList.add('highlight');
+        }else {
+            radioButtons[i].disabled = true;
+       }
+    }
+}
+function enableRadioButtons(){
+    var radioButtons = document.getElementsByName("answer");
+    for (var i = 0; i < radioButtons.length; i++) {
+      radioButtons[i].disabled = false;
+    }
 }
 /**
  * this function evaluates the answer given by the user and matches it with the array of answer.
@@ -148,37 +176,53 @@ function evaluateAnswer(userAnswer){
     let correctAnswer = quiz[questionIndex].ans;
     if (correctAnswer === userAnswer){
         score++;
-        const scoreArea = document.getElementById('scoreArea');
-        scoreArea.classList.remove('hide');
-        scoreArea.innerHTML=`
-        <p> Correct Answer !!!</p>
-        <p> You Scored ${score}/10 </p>`;
-    }else if (userAnswer !== correctAnswer){
-        scoreArea.classList.remove('hide');
-        scoreArea.innerHTML=`
-        <p> Incorrect Answer !!!</p>
-        <p> You Scored ${score}/10</p>`;
-    }else{
-        scoreArea.classList.add('hide');
     }
-// if the user hits submit button at the end of tenth question,its displays the final result.
+    // if the user hits submit button at the end of tenth question,its displays the final result.
     if(questionIndex == (quiz.length - 1)){
         displayResult();
     }
+    displayRightOptionGreen(correctAnswer);
 }
+
+ 
+ function displayRightOptionGreen(correctAnswer) {
+    if (correctAnswer === 'answer1') {
+      document.getElementById("option1").classList.add("option-green");
+    }
+    else if (correctAnswer === 'answer2') {
+      document.getElementById("option2").classList.add("option-green");
+    }
+    else if (correctAnswer === 'answer3') {
+      document.getElementById("option3").classList.add("option-green");
+    }
+    else if (correctAnswer === 'answer4') {
+      document.getElementById("option4").classList.add("option-green");
+    }
+ }
+ 
+ function resetAllOptionsColor() {
+    document.getElementById("option1").classList.remove("option-green");
+    document.getElementById("option2").classList.remove("option-green");
+    document.getElementById("option3").classList.remove("option-green");
+    document.getElementById("option4").classList.remove("option-green");
+ }
 
 /**
  * when user clicks submit button ,the next button pops up.
  */
 function onSubmit(){
     const next= document.getElementById('next');
+    const submit = document.getElementById('submit');
     next.classList.remove('hide');
+    submit.classList.add('hide');
 }
     
 // The next button creates an event listener to display the next question till ten questions.    
 function displayNextQuestion(){
     questionIndex++;
     deselectAll();
+    resetAllOptionsColor();
+    enableRadioButtons();
     next.classList.add('hide');
     scoreArea.classList.add('hide');
     if(questionIndex < (quiz.length)){

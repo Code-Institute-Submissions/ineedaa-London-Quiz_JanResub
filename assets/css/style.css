@@ -113,17 +113,23 @@ label:hover  {
 input{
     cursor:pointer;
 }
+.highlight {
+    background-color: #efef29;
+  }
 
 /* to hide the scoreArea,Next button */
 .hide {
     display:none;
 }
+.wrapper{
+    text-align:center;
+    align-items: center;
+}
 
 /* submit button */
 #submit { 
     padding: 10px;
-    display:block;
-    margin:auto;;
+    margin:auto;
     text-align:center;
     margin-top:40px;
     font-size:16px;
@@ -132,11 +138,26 @@ input{
 #submit:hover {
     background-color: #dd7857;
 }
+.option-green {
+    background-color: #66c966;
+    animation: flash 0.6s infinite;
+}
+@keyframes flash {
+    0% {
+        background-color: #66c966;
+    }
+
+    49% {
+        background-color: #13b685;
+    }
+
+    100% {
+        background-color: #4cf5c2;
+    }
+}
 
 /*next button */
-.wrapper{
-    text-align:center;
-}
+
 #next {   
     padding:10px;
     margin:20px 5px;
