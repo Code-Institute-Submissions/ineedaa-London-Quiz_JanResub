@@ -92,9 +92,8 @@ const option3 = document.getElementById('option3');
 const option4 = document.getElementById('option4');
 const submit = document.getElementById('submit');
 const answers = document.querySelectorAll('.answer');
-const scoreArea = document.getElementById('scoreArea');
 const next = document.getElementById('next');
-const container = document.getElementsByClassName('container')[0];
+const container = document.getElementsByClassName('container');
 
 // Let the initial value of the question index and score is zero.
 let questionIndex=0;
@@ -155,7 +154,7 @@ function disableRadioButtons(){
     var radioButtons = document.getElementsByName("answer");
     for (var i = 0; i < radioButtons.length; i++) {
         if(radioButtons[i].checked){
-            radioButtons[i].classList.add('highlight');
+            radioButtons[i].disabled= false;
         }else {
             radioButtons[i].disabled = true;
        }
@@ -177,11 +176,12 @@ function evaluateAnswer(userAnswer){
     if (correctAnswer === userAnswer){
         score++;
     }
+    displayRightOptionGreen(correctAnswer);
     // if the user hits submit button at the end of tenth question,its displays the final result.
     if(questionIndex == (quiz.length - 1)){
         displayResult();
     }
-    displayRightOptionGreen(correctAnswer);
+    
 }
 
  
@@ -224,7 +224,6 @@ function displayNextQuestion(){
     resetAllOptionsColor();
     enableRadioButtons();
     next.classList.add('hide');
-    scoreArea.classList.add('hide');
     if(questionIndex < (quiz.length)){
         loadQuestion();
     }else{
@@ -243,13 +242,11 @@ function deselectAll(){
  * displays the final result when user clicks the final submit button at tenth question.
  */
 function displayResult(){
-    if(score == 10){
-        container.innerHTML=`
-        <h3>Congratulations!!!<i class="fa fa-smile-o" aria-hidden="true"></i></h3>
-        <h4>You Scored ${score}/10</h4>`;
-    }else{
-        container.innerHTML=`
-        <h3>Better Luck Next Time!!!<i class="fa fa-frown-o" aria-hidden="true"></i></h3>
-        <h4>Your Total Score= ${score}/10</h4>`;
-    }
+    document.querySelector('.container').classList.add('hide');
+    document.querySelector('#game-over').classList.remove('hide');
+    document.getElementById('total-score').innerHTML=`<span> Total Score:
+    ${score}/10</span>`;
+    document.getElementById('play-again').addEventListener('click',function(){
+        location.reload();   
+    }) 
 }
